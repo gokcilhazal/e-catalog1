@@ -1,0 +1,1452 @@
+
+:root {
+    --cream: #F8F4EE;
+    --paper: #F1EAE1;
+    --brown: #725B4C;
+    --dark: #392D27;
+    --muted: #978578;
+    --rose: #D8BFB2;
+    --sage: #858875;
+    --white: #FFFCF8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #E9E3DC;
+    color: var(--dark);
+    font-family: "DM Sans", sans-serif;
+    min-height: 100vh;
+}
+
+/* HEADER */
+
+.topbar {
+    width: 100%;
+    height: 76px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--cream);
+    border-bottom: 1px solid rgba(114, 91, 76, .13);
+}
+
+.brand {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 25px;
+    letter-spacing: 3px;
+    text-decoration: none;
+    color: var(--dark);
+}
+
+.brand span {
+    color: var(--brown);
+    font-style: italic;
+}
+
+.header-label,
+.instagram-link {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--muted);
+}
+
+.header-label span {
+    color: var(--dark);
+}
+
+.instagram-link {
+    text-decoration: none;
+    color: var(--brown);
+    transition: .3s;
+}
+
+.instagram-link:hover {
+    letter-spacing: 3px;
+}
+
+/* CATALOG AREA */
+
+.catalog-wrapper {
+    width: min(1000px, 92%);
+    margin: 55px auto 40px;
+}
+
+.catalog-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--muted);
+}
+
+.catalog {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.414 / 1;
+    background: var(--cream);
+    overflow: hidden;
+    box-shadow: 0 25px 65px rgba(57, 45, 39, .13);
+}
+
+/* PAGES */
+
+.page {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 6%;
+    background: var(--cream);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(35px);
+    transition:
+        opacity .55s ease,
+        transform .65s cubic-bezier(.22, .61, .36, 1),
+        visibility .55s;
+    overflow: hidden;
+}
+
+.page.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    z-index: 2;
+}
+
+.page.exit-left {
+    opacity: 0;
+    transform: translateX(-35px);
+}
+
+.page.exit-right {
+    opacity: 0;
+    transform: translateX(35px);
+}
+
+.page-number {
+    position: absolute;
+    bottom: 22px;
+    right: 30px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--muted);
+}
+
+.eyebrow {
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    font-weight: 500;
+}
+
+.section-label {
+    position: absolute;
+    top: 27px;
+    left: 6%;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--muted);
+}
+
+/* COVER */
+
+.cover {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cover-content {
+    width: 53%;
+    padding: 8%;
+    position: relative;
+    z-index: 2;
+}
+
+.cover-content h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(65px, 10vw, 120px);
+    line-height: .77;
+    font-weight: 400;
+    letter-spacing: -5px;
+    margin: 35px 0;
+}
+
+.cover-content h1 em {
+    color: var(--brown);
+    font-weight: 400;
+}
+
+.cover-line {
+    width: 55px;
+    height: 1px;
+    background: var(--rose);
+    margin: 35px 0 22px;
+}
+
+.cover-description {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 24px;
+    line-height: 1.3;
+}
+
+.cover-english {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 12px;
+    line-height: 1.7;
+}
+
+.cover-bottom {
+    display: block;
+    margin-top: 55px;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--brown);
+}
+
+.cover-image {
+    width: 42%;
+    height: 100%;
+    position: relative;
+    padding: 28px 28px 28px 0;
+}
+
+.cover-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cover-image span {
+    position: absolute;
+    right: 40px;
+    bottom: 42px;
+    background: rgba(248, 244, 238, .9);
+    padding: 10px 16px;
+    font-size: 8px;
+    letter-spacing: 2px;
+}
+
+.cover-decoration {
+    position: absolute;
+    right: 33%;
+    top: 8%;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 160px;
+    color: rgba(114, 91, 76, .045);
+    pointer-events: none;
+}
+
+/* ABOUT */
+
+.about {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8%;
+}
+
+.about-content {
+    width: 48%;
+    padding-top: 35px;
+}
+
+.about-content h2,
+.collection-heading h2,
+.special-content h2,
+.order-content h2,
+.contact-content h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(38px, 5.5vw, 65px);
+    line-height: .95;
+    font-weight: 400;
+    margin: 25px 0;
+}
+
+.about-content h2 em,
+.collection-heading h2 em,
+.special-content h2 em,
+.order-content h2 em,
+.contact-content h2 em {
+    color: var(--brown);
+}
+
+.about-content > p:not(.eyebrow) {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 2;
+    margin-bottom: 15px;
+}
+
+.signature {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 21px;
+    color: var(--brown);
+    margin-top: 25px;
+}
+
+.about-image {
+    width: 43%;
+    height: 78%;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* COLLECTION PAGES */
+
+.collection-page {
+    padding-top: 10%;
+}
+
+.collection-heading {
+    text-align: center;
+}
+
+.collection-heading h2 {
+    margin: 16px 0 10px;
+}
+
+.collection-heading > p:last-child {
+    font-size: 10px;
+    color: var(--muted);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    width: 75%;
+    height: 55%;
+    margin: 28px auto 0;
+}
+
+.product {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.product img {
+    width: 100%;
+    height: 78%;
+    object-fit: cover;
+    transition: transform .7s ease;
+}
+
+.product:hover img {
+    transform: scale(1.04);
+}
+
+.product span {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    margin-top: 10px;
+}
+
+.product h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 19px;
+    font-weight: 500;
+    margin-top: 3px;
+}
+
+/* SPECIAL PAGE */
+
+.special-page {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8%;
+}
+
+.special-content {
+    width: 50%;
+    padding-top: 20px;
+}
+
+.special-content h2 {
+    font-size: clamp(43px, 6vw, 72px);
+}
+
+.special-content > p:not(.eyebrow) {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 2;
+    max-width: 340px;
+}
+
+.special-content > span {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--brown);
+    margin-top: 25px;
+}
+
+.special-image {
+    width: 43%;
+    height: 78%;
+}
+
+.special-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ORDER */
+
+.order-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.order-content {
+    width: 85%;
+    text-align: center;
+}
+
+.order-content h2 {
+    margin-bottom: 55px;
+}
+
+.order-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+    text-align: center;
+}
+
+.order-steps > div {
+    border-top: 1px solid var(--rose);
+    padding-top: 20px;
+}
+
+.order-steps span {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 28px;
+    color: var(--rose);
+}
+
+.order-steps h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 21px;
+    font-weight: 500;
+    margin: 12px 0;
+}
+
+.order-steps p {
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+/* CONTACT */
+
+.contact-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--paper);
+}
+
+.contact-content h2 {
+    font-size: clamp(65px, 9vw, 105px);
+    margin: 30px 0;
+    line-height: .78;
+}
+
+.contact-content > p:not(.eyebrow) {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 20px;
+    color: var(--muted);
+}
+
+.contact-line {
+    width: 50px;
+    height: 1px;
+    background: var(--rose);
+    margin: 35px auto;
+}
+
+.contact-instagram {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--brown);
+    font-size: 11px;
+    letter-spacing: 2px;
+    border-bottom: 1px solid var(--rose);
+    padding-bottom: 8px;
+}
+
+.contact-brand {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 25px;
+    letter-spacing: 3px;
+    margin-top: 65px;
+}
+
+.contact-content small {
+    display: block;
+    margin-top: 10px;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--muted);
+}
+
+.contact-decoration {
+    position: absolute;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 250px;
+    color: rgba(114, 91, 76, .045);
+    pointer-events: none;
+}
+
+/* NAVIGATION */
+
+.catalog-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 5px;
+}
+
+.catalog-navigation button {
+    background: transparent;
+    border: none;
+    color: var(--brown);
+    font-family: "DM Sans", sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    padding: 12px;
+    transition: .3s;
+}
+
+.catalog-navigation button:hover:not(:disabled) {
+    color: var(--dark);
+    transform: translateY(-2px);
+}
+
+.catalog-navigation button:disabled {
+    opacity: .3;
+    cursor: not-allowed;
+}
+
+.navigation-dots {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #CBBFB5;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.dot.active {
+    background: var(--brown);
+    transform: scale(1.5);
+}
+
+.navigation-hint {
+    text-align: center;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--muted);
+}
+
+/* FOOTER */
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 7%;
+    background: var(--cream);
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 650px) {
+
+    .topbar {
+        height: 65px;
+        padding: 0 5%;
+    }
+
+    .brand {
+        font-size: 20px;
+    }
+
+    .header-label {
+        display: none;
+    }
+
+    .instagram-link {
+        font-size: 9px;
+    }
+
+    .catalog-wrapper {
+        width: 94%;
+        margin: 35px auto;
+    }
+
+    .catalog {
+        aspect-ratio: 0.72 / 1;
+    }
+
+    .page {
+        padding: 9%;
+    }
+
+    .cover {
+        padding: 0;
+    }
+
+    .cover-content {
+        width: 54%;
+        padding: 6%;
+    }
+
+    .cover-content h1 {
+        font-size: clamp(47px, 12vw, 72px);
+        letter-spacing: -3px;
+        margin: 25px 0;
+    }
+
+    .cover-description {
+        font-size: 19px;
+    }
+
+    .cover-english {
+        font-size: 9px;
+    }
+
+    .cover-bottom {
+        font-size: 7px;
+        margin-top: 30px;
+        line-height: 1.8;
+    }
+
+    .cover-image {
+        width: 42%;
+        padding: 20px 15px 20px 0;
+    }
+
+    .cover-image span {
+        right: 20px;
+        bottom: 30px;
+        font-size: 6px;
+        padding: 8px;
+    }
+
+    .about {
+        gap: 5%;
+    }
+
+    .about-content {
+        width: 53%;
+    }
+
+    .about-content h2 {
+        font-size: 39px;
+    }
+
+    .about-content > p:not(.eyebrow) {
+        font-size: 9px;
+        line-height: 1.7;
+    }
+
+    .about-image {
+        width: 42%;
+        height: 65%;
+    }
+
+    .section-label {
+        top: 20px;
+        font-size: 7px;
+    }
+
+    .collection-page {
+        padding-top: 18%;
+    }
+
+    .collection-heading h2 {
+        font-size: 38px;
+    }
+
+    .collection-heading > p:last-child {
+        font-size: 9px;
+    }
+
+    .product-grid {
+        width: 100%;
+        height: 58%;
+        gap: 12px;
+        margin-top: 35px;
+    }
+
+    .product img {
+        height: 78%;
+    }
+
+    .product span {
+        font-size: 7px;
+        letter-spacing: .7px;
+    }
+
+    .product h3 {
+        font-size: 17px;
+    }
+
+    .special-content {
+        width: 54%;
+    }
+
+    .special-content h2 {
+        font-size: 43px;
+    }
+
+    .special-content > p:not(.eyebrow) {
+        font-size: 9px;
+        line-height: 1.7;
+    }
+
+    .special-image {
+        width: 42%;
+        height: 65%;
+    }
+
+    .order-content {
+        width: 100%;
+    }
+
+    .order-content h2 {
+        font-size: 42px;
+        margin-bottom: 35px;
+    }
+
+    .order-steps {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        text-align: left;
+    }
+
+    .order-steps > div {
+        padding-top: 8px;
+        display: grid;
+        grid-template-columns: 35px 1fr;
+        column-gap: 8px;
+    }
+
+    .order-steps span {
+        grid-row: span 2;
+    }
+
+    .order-steps h3 {
+        margin: 0;
+        font-size: 18px;
+    }
+
+    .order-steps p {
+        margin-top: 4px;
+    }
+
+    .contact-content h2 {
+        font-size: 70px;
+    }
+
+    .contact-content > p:not(.eyebrow) {
+        font-size: 17px;
+    }
+
+    .contact-brand {
+        margin-top: 45px;
+    }
+
+    .catalog-navigation {
+        padding: 15px 0;
+    }
+
+    .catalog-navigation button {
+        font-size: 9px;
+        padding: 8px 3px;
+    }
+
+    .navigation-dots {
+        gap: 7px;
+    }
+
+    footer {
+        padding: 20px 5%;
+        font-size: 7px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+    }
+}
+/* SIDE PAGE NAVIGATION */
+
+.catalog-wrapper {
+    position: relative;
+}
+
+.catalog-navigation {
+    position: absolute;
+    top: 50%;
+    left: -65px;
+    right: -65px;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.catalog-navigation .side-nav {
+    pointer-events: auto;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(114, 91, 76, .35);
+    border-radius: 50%;
+    background: var(--cream);
+    color: var(--brown);
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.catalog-navigation .side-nav:hover:not(:disabled) {
+    background: var(--brown);
+    color: white;
+    transform: scale(1.08);
+}
+
+.catalog-navigation .side-nav:disabled {
+    opacity: .25;
+    cursor: not-allowed;
+}
+
+.navigation-dots {
+    justify-content: center;
+    margin: 25px 0 15px;
+}
+
+/* MOBILE */
+
+@media (max-width: 850px) {
+
+    .catalog-navigation {
+        left: 5px;
+        right: 5px;
+    }
+
+    .catalog-navigation .side-nav {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+        background: rgba(248, 244, 238, .95);
+    }
+
+}
+
+/* =====================================
+   ATELIER FLORA - ENCHANTED GARDEN
+===================================== */
+
+:root {
+    --cream: #F5EEE5;
+    --paper: #EDE2D6;
+    --brown: #665044;
+    --dark: #342821;
+    --muted: #9B8575;
+    --rose: #CDAFA3;
+    --sage: #858875;
+    --gold: #C6A36E;
+}
+
+/* KOYU DIŞ ARKA PLAN */
+
+body {
+    background:
+        radial-gradient(ellipse at 15% 20%, #796354 0%, transparent 38%),
+        radial-gradient(ellipse at 85% 80%, #665044 0%, transparent 42%),
+        #45362F;
+}
+
+/* KATALOG ÇEVRESİ */
+
+.catalog-wrapper {
+    position: relative;
+    isolation: isolate;
+}
+
+.catalog-wrapper::before,
+.catalog-wrapper::after {
+    position: absolute;
+    z-index: -1;
+    color: #DCC6A8;
+    opacity: .65;
+    font-family: "Cormorant Garamond", serif;
+    pointer-events: none;
+    line-height: 1.8;
+    white-space: pre;
+}
+
+.catalog-wrapper::before {
+    content: "✿\A  ❀\A      ✿";
+    left: -85px;
+    top: 12%;
+    font-size: 35px;
+    transform: rotate(-18deg);
+}
+
+.catalog-wrapper::after {
+    content: "❀\A      ✿\A  ❋";
+    right: -85px;
+    bottom: 12%;
+    font-size: 32px;
+    transform: rotate(15deg);
+}
+
+/* SAYFALARDA ÇİÇEK SÜSLEMELERİ */
+
+.page {
+    background-color: var(--cream);
+    position: absolute;
+    overflow: hidden;
+}
+
+.page::before {
+    content: "✿";
+    position: absolute;
+    bottom: 18px;
+    left: 25px;
+    font-family: serif;
+    font-size: 36px;
+    color: #BDA18B;
+    opacity: .24;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.page::after {
+    content: "❀";
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    font-family: serif;
+    font-size: 30px;
+    color: #BDA18B;
+    opacity: .22;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* KATALOG SAYFASI */
+
+.catalog {
+    perspective: 1400px;
+    isolation: isolate;
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, .35),
+        0 0 35px rgba(214, 185, 147, .12);
+}
+
+/* SAYFA GEÇİŞLERİ */
+
+.page {
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+}
+
+.page.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+}
+
+.page.slide-in-right {
+    animation: gardenFromRight .7s cubic-bezier(.22,.7,.25,1) both;
+    z-index: 3;
+}
+
+.page.slide-in-left {
+    animation: gardenFromLeft .7s cubic-bezier(.22,.7,.25,1) both;
+    z-index: 3;
+}
+
+.page.slide-out-left {
+    animation: gardenToLeft .7s ease both;
+    z-index: 2;
+}
+
+.page.slide-out-right {
+    animation: gardenToRight .7s ease both;
+    z-index: 2;
+}
+
+@keyframes gardenFromRight {
+    from {
+        transform: translateX(100%) scale(.97);
+        opacity: .5;
+        filter: brightness(1.2);
+    }
+    to {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+        filter: brightness(1);
+    }
+}
+
+@keyframes gardenFromLeft {
+    from {
+        transform: translateX(-100%) scale(.97);
+        opacity: .5;
+        filter: brightness(1.2);
+    }
+    to {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+        filter: brightness(1);
+    }
+}
+
+@keyframes gardenToLeft {
+    to {
+        transform: translateX(-25%);
+        opacity: 0;
+    }
+}
+
+@keyframes gardenToRight {
+    to {
+        transform: translateX(25%);
+        opacity: 0;
+    }
+}
+
+/* SİHİR TOZU KATMANI */
+
+.magic-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 8;
+    pointer-events: none;
+}
+
+.magic-particle {
+    position: absolute;
+    left: var(--start-x);
+    top: var(--start-y);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: #F4D9A5;
+    box-shadow:
+        0 0 5px #F4D9A5,
+        0 0 12px rgba(229, 194, 133, .8);
+    animation: fairyDust var(--duration) ease-out forwards;
+    animation-delay: var(--delay);
+    opacity: 0;
+}
+
+.magic-particle.flower {
+    width: auto;
+    height: auto;
+    background: none;
+    box-shadow: none;
+    color: #E5C7B5;
+    font-size: var(--size);
+    text-shadow: 0 0 8px rgba(255, 230, 205, .8);
+}
+
+@keyframes fairyDust {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(.2) rotate(0deg);
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform:
+            translate(var(--move-x), var(--move-y))
+            scale(0)
+            rotate(180deg);
+    }
+}
+
+/* DIŞ ALANLARIN OKUNAKLILIĞI */
+
+.topbar,
+footer {
+    background: #EDE3D8;
+}
+
+/* MOBİL */
+
+@media (max-width: 850px) {
+    .catalog-wrapper::before {
+        left: 0;
+        top: 8%;
+        font-size: 19px;
+    }
+
+    .catalog-wrapper::after {
+        right: 0;
+        bottom: 8%;
+        font-size: 19px;
+    }
+
+    .page::before {
+        font-size: 25px;
+        left: 12px;
+        bottom: 10px;
+    }
+
+    .page::after {
+        font-size: 22px;
+        right: 12px;
+        top: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page.slide-in-right,
+    .page.slide-in-left,
+    .page.slide-out-left,
+    .page.slide-out-right,
+    .magic-particle {
+        animation: none !important;
+    }
+}
+
+/* =====================================
+   ATELIER FLORA – SOFT MAGIC UPDATE
+===================================== */
+
+/* DIŞ ARKA PLAN: BİRAZ DAHA AÇIK */
+body {
+    background:
+        radial-gradient(ellipse at 20% 15%, #806B5D 0%, transparent 45%),
+        radial-gradient(ellipse at 85% 80%, #766052 0%, transparent 48%),
+        linear-gradient(135deg, #665448, #887363, #706052);
+    background-size: 180% 180%;
+    animation: outerGlow 18s ease-in-out infinite alternate;
+}
+
+@keyframes outerGlow {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+/* KATALOG İÇİ: HAREKETLİ KREM KAĞIT */
+.page {
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(255,255,255,.95),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(218,183,160,.38),
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(255,255,255,.35),
+            transparent 65%
+        ),
+        linear-gradient(
+            125deg,
+            #F8F0E7,
+            #EBDCCE,
+            #F7EDE2,
+            #E8D8CA
+        );
+
+    background-size: 160% 160%;
+    animation: livingPaper 10s ease-in-out infinite alternate;
+    isolation: isolate;
+}
+
+@keyframes livingPaper {
+    0% {
+        background-position: 0% 0%;
+        filter: brightness(1);
+    }
+    50% {
+        background-position: 70% 40%;
+        filter: brightness(1.035);
+    }
+    100% {
+        background-position: 100% 100%;
+        filter: brightness(1.015);
+    }
+}
+
+/* SAYFA ÜZERİNDE HAREKET EDEN IŞIK */
+.page::before {
+    content: "";
+    position: absolute;
+    inset: -60%;
+    z-index: 0;
+    pointer-events: none;
+
+    background: linear-gradient(
+        115deg,
+        transparent 38%,
+        rgba(255,255,255,.38) 48%,
+        rgba(255,226,202,.22) 52%,
+        transparent 62%
+    );
+
+    animation: movingLight 8s ease-in-out infinite;
+}
+
+@keyframes movingLight {
+    0% {
+        transform: translate(-35%, -15%) rotate(0deg);
+    }
+    50% {
+        transform: translate(15%, 5%) rotate(8deg);
+    }
+    100% {
+        transform: translate(35%, 15%) rotate(0deg);
+    }
+}
+
+/* HAREKETLİ RENK PARILTISI */
+.page::after {
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.45) 0 2px,
+            transparent 3px
+        );
+    background-size: 48px 48px;
+    animation: tinySparkles 14s linear infinite;
+}
+
+@keyframes tinySparkles {
+    from {
+        background-position: 0 0;
+        opacity: .18;
+    }
+    to {
+        background-position: 48px 96px;
+        opacity: .42;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body,
+    .page,
+    .page::before,
+    .page::after {
+        animation: none !important;
+    }
+}
+
+/* =====================================
+   ENCHANTED PAGE TRANSITION
+===================================== */
+
+.catalog {
+    perspective: 1600px;
+}
+
+.page {
+    backface-visibility: hidden;
+    transform-origin: center center;
+}
+
+/* İLERİ: YENİ SAYFA SAĞDAN AÇILIR */
+.page.slide-in-right {
+    z-index: 5;
+    animation: enchantedInRight .95s cubic-bezier(.22,.75,.25,1) both;
+}
+
+/* GERİ: YENİ SAYFA SOLDAN AÇILIR */
+.page.slide-in-left {
+    z-index: 5;
+    animation: enchantedInLeft .95s cubic-bezier(.22,.75,.25,1) both;
+}
+
+/* ESKİ SAYFA SOLA ÇEKİLİR */
+.page.slide-out-left {
+    z-index: 3;
+    animation: enchantedOutLeft .95s cubic-bezier(.55,.05,.75,.35) both;
+}
+
+/* ESKİ SAYFA SAĞA ÇEKİLİR */
+.page.slide-out-right {
+    z-index: 3;
+    animation: enchantedOutRight .95s cubic-bezier(.55,.05,.75,.35) both;
+}
+
+@keyframes enchantedInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(90px) scale(.94) rotateY(-7deg);
+        filter: brightness(1.2);
+    }
+    65% {
+        opacity: 1;
+        transform: translateX(-8px) scale(1.01) rotateY(1deg);
+        filter: brightness(1.06);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1) rotateY(0);
+        filter: brightness(1);
+    }
+}
+
+@keyframes enchantedInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-90px) scale(.94) rotateY(7deg);
+        filter: brightness(1.2);
+    }
+    65% {
+        opacity: 1;
+        transform: translateX(8px) scale(1.01) rotateY(-1deg);
+        filter: brightness(1.06);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1) rotateY(0);
+        filter: brightness(1);
+    }
+}
+
+@keyframes enchantedOutLeft {
+    0% {
+        opacity: 1;
+        transform: translateX(0) scale(1) rotateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-65px) scale(.96) rotateY(4deg);
+    }
+}
+
+@keyframes enchantedOutRight {
+    0% {
+        opacity: 1;
+        transform: translateX(0) scale(1) rotateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(65px) scale(.96) rotateY(-4deg);
+    }
+}
+
+/* SİHİR TOZU */
+.magic-particles {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.magic-particle {
+    position: absolute;
+    left: var(--start-x);
+    top: var(--start-y);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: #E8C98E;
+    box-shadow: 0 0 8px #F8E5B9, 0 0 15px rgba(232,201,142,.7);
+    animation: fairyFloat var(--duration) ease-out var(--delay) both;
+}
+
+.magic-particle.flower {
+    width: auto;
+    height: auto;
+    color: #E7C7BB;
+    background: none;
+    box-shadow: none;
+    font-size: var(--size);
+    text-shadow: 0 0 8px rgba(255,255,255,.8);
+}
+
+@keyframes fairyFloat {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(.4) rotate(0deg);
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--move-x), var(--move-y)) scale(1.2) rotate(180deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page.slide-in-right,
+    .page.slide-in-left,
+    .page.slide-out-left,
+    .page.slide-out-right,
+    .magic-particle {
+        animation-duration: .01ms !important;
+    }
+}
